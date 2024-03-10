@@ -60,9 +60,9 @@ const stringArray: string[] = ['apple', 'orange', 'banana', 'grape'];
 const purgeNumbers: (numbers: number[]) => number[] = purge;
 
 const numberPurgeNumbers: number[] = purgeNumbers(numberArray);
-// const stringPurgeNumbers: string[] = purgeNumbers(stringArray);
+const stringPurgeNumbers: string[] = purgeNumbers(stringArray);
 console.log(numberPurgeNumbers);
-// console.log(stringPurgeNumbers);
+console.log(stringPurgeNumbers);
 
 interface Magazine {
     title: string;
