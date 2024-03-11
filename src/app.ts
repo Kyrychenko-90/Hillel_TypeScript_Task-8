@@ -128,15 +128,19 @@ interface CallbackFn<T> {
     (err: Error | null, data: T | null): void;
 }
 
-function useCallback(callback: CallbackFn<string>): void {
+function useCallback<T>(callback: CallbackFn<T>): void {
     setTimeout(() => {
         const success = true;
-        const result: string | null = success ? 'Отримані дані' : null;
+        const result: T | null = success ? ('Отримані дані' as T) : null;
         const error: Error | null = success ? null : new Error('Помилка запиту');
         callback(error, result);
     }, 1000);
 }
 
 useCallback((err, data) => {
-    err ? console.error(err.message) : console.log(data);
-})
+    if (err) {
+        console.error(err.message);
+    } else {
+        console.log(data);
+    }
+});
